@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Link Hub</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔗</text></svg>">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <button id="menuBtn" class="ib menu" aria-label="Open menu">☰</button>
+  <div class="brand"><span class="logo">🔗</span><span>Smart Link Hub</span></div>
+  <input id="search" type="search" placeholder="Search by name, URL or description" aria-label="Search websites">
+  <button id="addBtn" class="btn primary">＋ Add Website</button>
+  <button id="themeBtn" class="ib" aria-label="Toggle dark mode">🌙</button>
+  <button id="settingsBtn" class="ib" aria-label="Settings">⚙️</button>
+</header>
+
+<div class="layout">
+  <aside id="side">
+    <nav id="navTop"></nav>
+    <h2 class="sl">Sections</h2>
+    <div id="secs"></div>
+    <button id="newSec" class="btn wide">＋ Create New Section</button>
+    <nav id="navBot"></nav>
+  </aside>
+  <div id="scrim"></div>
+
+  <main>
+    <div class="bar">
+      <div><h1 id="title"></h1><p id="sub"></p></div>
+      <label id="sortWrap" class="sort">Sort by
+        <select id="sort">
+          <option value="recent">Recently added</option>
+          <option value="az">Name A–Z</option>
+          <option value="za">Name Z–A</option>
+        </select>
+      </label>
+    </div>
+    <div id="content"></div>
+  </main>
+</div>
+
+<footer>© <span id="yr"></span> Smart Link Hub. All rights reserved.</footer>
+
+<dialog id="siteDlg">
+  <form id="siteForm" novalidate>
+    <h2 id="siteTitle">Add website</h2>
+    <label>Name<input id="fName" maxlength="60" placeholder="e.g. GitHub"></label>
+    <span class="err" id="eName"></span>
+    <label>URL<input id="fUrl" placeholder="e.g. github.com"></label>
+    <span class="err" id="eUrl"></span>
+    <label>Description<textarea id="fDesc" rows="2" maxlength="140" placeholder="What is this site for?"></textarea></label>
+    <label>Section<select id="fSec"></select></label>
+    <label class="chk"><input type="checkbox" id="fFav"> Add to favorites</label>
+    <label class="chk"><input type="checkbox" id="fPin"> Pin to top</label>
+    <div class="row end"><button type="button" class="btn" data-close>Cancel</button><button class="btn primary">Save website</button></div>
+  </form>
+</dialog>
+
+<dialog id="secDlg">
+  <form id="secForm" novalidate>
+    <h2 id="secTitle">Create section</h2>
+    <label>Icon (emoji)<input id="sIcon" maxlength="4" placeholder="📁"></label>
+    <label>Section name<input id="sName" maxlength="30" placeholder="e.g. Recipes"></label>
+    <span class="err" id="eSec"></span>
+    <div class="row end"><button type="button" class="btn" data-close>Cancel</button><button class="btn primary">Save section</button></div>
+  </form>
+</dialog>
+
+<dialog id="confirmDlg">
+  <form method="dialog">
+    <h2 id="cTitle">Are you sure?</h2>
+    <p id="cMsg"></p>
+    <div class="row end"><button class="btn" value="cancel">Cancel</button><button class="btn danger solid" value="ok" id="cOk">Delete</button></div>
+  </form>
+</dialog>
+
+<input type="file" id="file" accept="application/json,.json" hidden>
+<div id="toast" role="status" aria-live="polite"></div>
+<script src="script.js"></script>
+</body>
+</html>
